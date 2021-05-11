@@ -1,0 +1,72 @@
+{% extends 'ourproduct/base.html' %}
+{% load static %}
+{% block content %}
+
+  <br><br>
+    <center>
+      <h2>Our product</h2>
+    </center>
+    <br>
+    <div class="row">
+      {% for product in products %}
+        <div class="col-lg-3 col-md-5">
+          <img src="{{ product.image.url }}">
+          <a href="{% url 'product_details' product.id %}"><h2>{{ product.title }}</h2></a>
+          <!--<p>{{ product.description |safe | truncatechars:20 }}</p>-->
+          <!-- striptags is used insted of safe to remove all html tage-->
+          {% if project.url %}
+            <br><<a href="{{ project.url }}">Link</a>
+          {% endif %}
+        </div>
+
+      {% endfor %}
+    </div>
+
+
+    {% for aboutus in aboutuses %}
+
+      <h2>{{ aboutus.title |safe}}</h2>
+
+      {% if aboutus.image %}
+        <center>
+          <img src="{% static 'ourproduct\CEO picture.PNG' %} " height="200" width="200">
+        </center>
+
+      {% endif %}
+
+      {% if aboutus.description %}
+        <p>{{ aboutus.description |safe }}</p>
+      {% endif %}
+
+
+      {% if aboutus.url %}
+        <br><<a href="{{ aboutus.url }}">Link</a>
+      {% endif %}
+
+    {% endfor %}
+
+
+    <br>
+
+
+    <br>
+
+    {% for career in careers %}
+
+      <h2>{{ career.title |safe}}</h2>
+
+      {% if career.description %}
+        <p>{{ career.description |safe}}</p>
+      {% endif %}
+
+      {% if career.image %}
+        <img src="{{ career.image.url }}">
+      {% endif %}
+
+      {% if career.url %}
+        <br><<a href="{{ career.url }}">Link</a>
+      {% endif %}
+
+    {% endfor %}
+
+{% endblock %}

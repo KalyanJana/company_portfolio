@@ -1,0 +1,22 @@
+{% extends 'ourproduct/base.html' %}
+
+{% block content %}
+  {% for all_Environments in allenvironments %}
+
+    <h2>{{ all_Environments.title |safe }}</h2>
+
+    {% if all_Environments.description %}
+      <p>{{ all_Environments.description |safe}}</p>
+    {% endif %}
+
+    {% if all_Environments.image %}
+      <img src="{{ all_Environments.image.url }}">
+    {% endif %}
+
+    {% if all_Environments.url %}
+      <br><<a href="{{ all_Environments.url }}">Link</a>
+    {% endif %}
+
+  {% endfor %}
+
+{% endblock %}

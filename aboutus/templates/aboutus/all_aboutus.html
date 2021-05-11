@@ -1,0 +1,31 @@
+{% extends 'ourproduct/base.html' %}
+{% load static %}
+{% block content3 %}
+
+  <div class="row">
+  {% for aboutus in aboutuses %}
+
+    <h2>{{ aboutus.title |safe }}</h2>
+
+    {% if aboutus.image %}
+      <center>
+        <img src="{% static 'ourproduct\CEO picture.PNG' %} " height="200" width="200">
+      </center>
+
+    {% endif %}
+
+    {% if aboutus.description %}
+      <p>{{ aboutus.description |safe}}</p>
+    {% endif %}
+
+
+
+    {% if aboutus.url %}
+      <br><<a href="{{ aboutus.url }}">Link</a>
+    {% endif %}
+
+  {% endfor %}
+</div>
+
+</div>
+{% endblock %}

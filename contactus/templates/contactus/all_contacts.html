@@ -1,0 +1,107 @@
+{% extends 'ourproduct/base.html' %}
+
+{% block content %}
+  {% for contactus in contactuses %}
+
+    <h2>{{ contactus.title }}</h2>
+
+    {% if contactus.description %}
+      <p>{{ contactus.description }}</p>
+    {% endif %}
+
+    {% if contactus.image %}
+      <img src="{{ contactus.image.url }}">
+    {% endif %}
+
+    {% if contactus.url %}
+      <br><<a href="{{ contactus.url }}">Link</a>
+    {% endif %}
+
+  {% endfor %}
+
+  <div class="contact-info">
+    {% if name %}
+        <center>
+          <h2>Thanks {{ name }}!</h2>
+          <p>We received your email and will respond shortly...</p>
+        </center>
+        <br><br><br>
+    {% else %}
+
+    <!-- cotact Area Start-->
+    <section class="maps_wrapp">
+      <center>
+        <div class="google-maps mb-100">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.848181096911!2d78.59983631438342!3d17.466979105103345!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDI4JzAxLjEiTiA3OMKwMzYnMDcuMyJF!5e0!3m2!1sen!2sin!4v1620628465234!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+          </iframe>
+        </div>
+      </center>
+    </section>
+
+    {% endif %}
+  </div>
+
+  <section class="contact">
+      <div class="content">
+        <h2>Contact Us</h2>
+        <p>this is the section to write the details abhout the contact.</p>
+      </div>
+      <div class="container">
+        <div class="contactInfo">
+          <div class="box">
+            <div class="icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+            <div class="text">
+              <h3>Address</h3>
+              <p>Plot no. 119/5, Phase-II, IDA, <br>Cherlapally,<br> Hydrabad-500051</p>
+            </div>
+          </div>
+          <div class="box">
+            <div class="icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
+            <div class="text">
+              <h3>Phone</h3>
+              <p>+91 9850498435</p>
+            </div>
+          </div>
+          <div class="box">
+            <div class="icon"><i class="fa fa-envelope-o" aria-hidden="true"></i></div>
+            <div class="text">
+              <h3>Email</h3>
+              <p>info@sinnchem.com</p>
+            </div>
+          </div>
+        </div>
+        <div class="contactForm">
+          <form class="" action="{% url 'index' %}" method="post">
+            {% csrf_token %}
+            <h2>Send Message</h2>
+            <div class="inputBox">
+                <input type="text" name="name" value="" required="required">
+                <span>Full Name</span>
+            </div>
+            <div class="inputBox">
+                <input type="text" name="phone" value="" required="required">
+                <span>Phone Number</span>
+            </div>
+            <div class="inputBox">
+                <input type="text" name="email" value="" required="required">
+                <span>Email</span>
+            </div>
+            <div class="inputBox">
+                <input type="text" name="subject" value="" required="required">
+                <span>Subject</span>
+            </div>
+            <div class="inputBox">
+                <textarea  name="message" required="required"></textarea>
+                <span>Type Your Message...</span>
+            </div>
+            <div class="inputBox">
+              <input type="submit" name="" value="Send">
+            </div>
+          </form>
+        </div>
+      </div>
+  </section>
+
+
+
+{% endblock %}

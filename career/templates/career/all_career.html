@@ -1,0 +1,25 @@
+{% extends 'ourproduct/base.html' %}
+
+{% block content %}
+
+
+  {% for career in careers %}
+
+    <h2>{{ career.title |safe }}</h2>
+
+    {% if career.description %}
+      <p>{{ career.description |safe }}</p>
+    {% endif %}
+
+    {% if career.image %}
+      <img src="{{ career.image.url }}">
+    {% endif %}
+
+    {% if career.url %}
+      <br><<a href="{{ career.url }}">Link</a>
+    {% endif %}
+
+  {% endfor %}
+
+
+{% endblock %}

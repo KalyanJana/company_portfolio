@@ -1,0 +1,13 @@
+{% extends 'ourproduct/base.html' %}
+
+
+
+{% block content2 %}
+<a class="nav-link" href="{% url 'all_ourproducts' %}">Our Porducts</a>
+
+<h1>{{product.title}}</h1>
+<br>
+<p>{{product.description | safe }}</p>
+
+
+{% endblock %}
